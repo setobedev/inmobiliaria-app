@@ -1,0 +1,84 @@
+<mat-sidenav-container class="sidenav-container">
+  <!-- Menu izquierdo -->
+  <mat-sidenav
+    #sidenavLeft
+    fixedInViewport
+    class="sidenav"
+    [opened]="false"
+    [ngClass]="{ mobile: isMobile() }"
+    [mode]="isMobile() ? 'over' : 'side'"
+    [attr.role]="isMobile() ? 'dialog' : 'navigation'"
+  >
+    <mat-toolbar class="toolbar-sidenav">
+      Menu izquierdo
+      <button
+        matIconButton
+        type="button"
+        aria-label="Toggle sidenav"
+        (click)="sidenavLeft.toggle()"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#">Link 1</a>
+      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Contenido principal -->
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="toolbar-navbar">
+      <button
+        matIconButton
+        type="button"
+        aria-label="Toggle sidenav"
+        (click)="sidenavLeft.toggle()"
+        [class.display-none]="!isMobile() && sidenavLeft.opened"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div></div>
+      <button
+        matIconButton
+        type="button"
+        aria-label="Toggle sidenav"
+        (click)="sidenavRight.toggle()"
+        [class.display-none]="!isMobile() && sidenavRight.opened"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+
+  <!-- Menu derecho -->
+  <mat-sidenav
+    #sidenavRight
+    fixedInViewport
+    position="end"
+    class="sidenav"
+    [opened]="false"
+    [ngClass]="{ mobile: isMobile() }"
+    [mode]="isMobile() ? 'over' : 'side'"
+    [attr.role]="isMobile() ? 'dialog' : 'navigation'"
+  >
+    <mat-toolbar class="toolbar-sidenav">
+      Menu derecho
+      <button
+        matIconButton
+        type="button"
+        aria-label="Toggle sidenav"
+        (click)="sidenavRight.toggle()"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#">Link 1</a>
+      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>
+    </mat-nav-list>
+  </mat-sidenav>
+</mat-sidenav-container>
