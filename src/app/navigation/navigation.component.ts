@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { NavbarMenu } from './components/navbar-menu/navbar-menu';
 
 @Component({
   selector: 'app-navigation',
@@ -21,6 +22,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
     MatSidenavModule,
     MatListModule,
     MatIconModule,
+    NavbarMenu,
   ],
 })
 export class NavigationComponent {

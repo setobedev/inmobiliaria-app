@@ -1,0 +1,92 @@
+/**
+ * * FONTS    
+ *
+ * h1: título principal (una vez por página, si es posible). 
+ * h2: subtítulo o secciones dentro del h1.
+ * h3, h4, etc.: subsecciones.
+ *  
+ * p: párrafos de texto.
+ * small: texto secundario, notas, disclaimers.
+ * strong y em: para enfatizar, no para estilos visuales solamente.
+ *
+ * 🔍 Esto mejora la legibilidad y la comprensión del contenido.
+ * 🔍 Esto mejora la accesibilidad (a11y) y el SEO.
+*/
+
+@use '../fonts/OpenSans/OpenSans.scss' as *;
+@use '../fonts/Montserrat/Montserrat.scss' as *;
+
+$font-family-base: 'Montserrat-Regular', sans-serif;
+
+$font-weight-bold: 700;
+$font-weight-medium: 500;
+$font-weight-regular: 400;
+
+// Escala tipográfica (usa rem o em, no px)
+$font-size-xs: 0.75rem; // 12px
+$font-size-sm: 0.875rem; // 14px
+$font-size-md: 1rem; // 16px
+$font-size-lg: 1.25rem; // 20px
+$font-size-xl: 1.5rem; // 24px
+$font-size-2xl: 2rem; // 32px
+$font-size-3xl: 3rem; // 48px
+
+:root {
+  --font-family-base: #{$font-family-base};
+  --font-size-xs: #{$font-size-xs};
+  --font-size-sm: #{$font-size-sm};
+  --font-size-md: #{$font-size-md};
+  --font-size-lg: #{$font-size-lg};
+  --font-size-xl: #{$font-size-xl};
+  --font-size-2xl: #{$font-size-2xl};
+  --font-size-3xl: #{$font-size-3xl};
+  --font-weight-bold: #{$font-weight-bold};
+  --font-weight-medium: #{$font-weight-medium};
+  --font-weight-regular: #{$font-weight-regular};
+}
+
+@mixin heading($size, $weight: $font-weight-bold) {
+  font-size: $size;
+  line-height: 1.2;
+  font-weight: $weight;
+  font-family: $font-family-base;
+}
+
+@mixin body-text($size, $weight: $font-weight-regular) {
+  font-size: $size;
+  line-height: 1.6;
+  font-weight: $weight;
+  font-family: $font-family-base;
+}
+
+h1 {
+  @include heading(var(--font-size-3xl));
+}
+
+h2 {
+  @include heading(var(--font-size-2xl));
+}
+
+h3 {
+  @include heading(var(--font-size-xl, --font-weight-medium));
+}
+
+h4 {
+  @include heading(var(--font-size-lg, --font-weight-medium));
+}
+
+h5 {
+  @include heading(var(--font-size-md, --font-weight-medium));
+}
+
+h6 {
+  @include heading(var(--font-size-sm, --font-weight-medium));
+}
+
+p {
+  @include body-text(var(--font-size-md));
+}
+
+small {
+  @include body-text(var(--font-size-xs));
+}

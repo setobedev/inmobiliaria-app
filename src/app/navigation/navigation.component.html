@@ -4,6 +4,7 @@
     #sidenavLeft
     fixedInViewport
     class="sidenav"
+    position="start"
     [opened]="false"
     [ngClass]="{ mobile: isMobile() }"
     [mode]="isMobile() ? 'over' : 'side'"
@@ -30,25 +31,39 @@
   <!-- Contenido principal -->
   <mat-sidenav-content>
     <mat-toolbar color="primary" class="toolbar-navbar">
-      <button
-        matIconButton
-        type="button"
-        aria-label="Toggle sidenav"
-        (click)="sidenavLeft.toggle()"
-        [class.display-none]="!isMobile() && sidenavLeft.opened"
-      >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <div></div>
-      <button
-        matIconButton
-        type="button"
-        aria-label="Toggle sidenav"
-        (click)="sidenavRight.toggle()"
-        [class.display-none]="!isMobile() && sidenavRight.opened"
-      >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
+      <ul class="display-flex justify-between align-center">
+        <li>
+          @if(isMobile()){
+          <button
+            matIconButton
+            type="button"
+            aria-label="Toggle sidenav"
+            (click)="sidenavLeft.toggle()"
+            [class.display-none]="!isMobile() && sidenavLeft.opened"
+          >
+            <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+          </button>
+          }
+        </li>
+        <li>
+          @if(!isMobile()) {
+          <app-navbar-menu />
+          }
+        </li>
+        <li>
+          @if(isMobile()){
+          <button
+            matIconButton
+            type="button"
+            aria-label="Toggle sidenav"
+            (click)="sidenavRight.toggle()"
+            [class.display-none]="!isMobile() && sidenavRight.opened"
+          >
+            <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+          </button>
+          }
+        </li>
+      </ul>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>
@@ -65,7 +80,6 @@
     [attr.role]="isMobile() ? 'dialog' : 'navigation'"
   >
     <mat-toolbar class="toolbar-sidenav">
-      Menu derecho
       <button
         matIconButton
         type="button"
@@ -74,6 +88,7 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
+      Menu derecho
     </mat-toolbar>
     <mat-nav-list>
       <a mat-list-item href="#">Link 1</a>

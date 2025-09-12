@@ -1,11 +1,9 @@
-.display-block {
-  display: block !important;
+@use './flex' as *;
+
+.visible {
+  visibility: visible !important;
 }
 
-.display-flex {
-  display: flex !important;
-}
-
-.display-none {
-  display: none !important;
+.hidden {
+  visibility: hidden !important;
 }
