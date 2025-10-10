@@ -1,0 +1,63 @@
+@use '../../../../../assets/styles/fonts' as *;
+
+li {
+  height: 44px;
+  text-decoration: none;
+
+  small {
+    transition: all 0.3s ease-in-out;
+  }
+
+  &.active small,
+  &:hover small {
+    color: #000;
+    font-weight: 500;
+    text-shadow: 0 0 0.8px #000000;
+  }
+}
+
+.enter-container {
+  border: 1px solid #dddddd;
+  margin-top: 1em;
+  padding: 20px 20px 0px 20px;
+  font-weight: bold;
+  font-size: 20px;
+
+  background: red;
+  position: absolute;
+  height: 300px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin-top: 44px;
+}
+
+.enter-animation {
+  animation: expand 0.3s ease;
+}
+
+.leave-animation {
+  animation: contract .4s;
+}
+
+@keyframes expand {
+  from {
+    opacity: 0;
+    height: 0px;
+  }
+  to {
+    opacity: 1;
+    height: 300px;
+  }
+}
+
+@keyframes contract {
+  from {
+    opacity: 1;
+    height: 300px;
+  }
+  to {
+    opacity: 0;
+    height: 0px;
+  }
+}

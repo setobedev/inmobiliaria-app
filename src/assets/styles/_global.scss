@@ -1,4 +1,5 @@
 @use './flex' as *;
+@use './sizing' as *;
 
 .visible {
   visibility: visible !important;
@@ -6,4 +7,8 @@
 
 .hidden {
   visibility: hidden !important;
+}
+
+.link {
+  cursor: pointer;
 }

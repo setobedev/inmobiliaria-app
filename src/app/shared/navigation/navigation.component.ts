@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NavbarMenu } from './components/navbar-menu/navbar-menu';
+import { NavigationService } from './navigation.service';
 
 @Component({
   selector: 'app-navigation',
@@ -26,6 +27,7 @@ import { NavbarMenu } from './components/navbar-menu/navbar-menu';
   ],
 })
 export class NavigationComponent {
+  service = inject(NavigationService);
   private breakpointObserver = inject(BreakpointObserver);
 
   isMobile$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.XSmall).pipe(
@@ -33,4 +35,6 @@ export class NavigationComponent {
     shareReplay()
   );
   isMobile = toSignal(this.isMobile$, { initialValue: false });
+
+  hoverMatToolbar = signal(false);
 }

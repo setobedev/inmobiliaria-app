@@ -13,10 +13,12 @@
  * 🔍 Esto mejora la accesibilidad (a11y) y el SEO.
 */
 
+@use './colors' as *;
 @use '../fonts/OpenSans/OpenSans.scss' as *;
 @use '../fonts/Montserrat/Montserrat.scss' as *;
 
 $font-family-base: 'Montserrat-Regular', sans-serif;
+$font-family-medium: 'Montserrat-Medium', sans-serif;
 
 $font-weight-bold: 700;
 $font-weight-medium: 500;
@@ -57,6 +59,12 @@ $font-size-3xl: 3rem; // 48px
   line-height: 1.6;
   font-weight: $weight;
   font-family: $font-family-base;
+}
+
+h1, h2, h3, h4, h5, h6, p, small {
+  margin: 0;
+  padding: 0;
+  color: var(--color-text);
 }
 
 h1 {

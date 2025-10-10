@@ -10,7 +10,7 @@
     [mode]="isMobile() ? 'over' : 'side'"
     [attr.role]="isMobile() ? 'dialog' : 'navigation'"
   >
-    <mat-toolbar class="toolbar-sidenav">
+    <mat-toolbar class="toolbar-sidenav justify-between">
       Menu izquierdo
       <button
         matIconButton
@@ -30,8 +30,8 @@
 
   <!-- Contenido principal -->
   <mat-sidenav-content>
-    <mat-toolbar color="primary" class="toolbar-navbar">
-      <ul class="display-flex justify-between align-center">
+    <mat-toolbar color="primary" class="toolbar-navbar" (mouseover)="service.showMenu()" (mouseleave)="service.hideMenu()">
+      <ul class="w-100 display-flex justify-between align-center">
         <li>
           @if(isMobile()){
           <button
@@ -79,7 +79,7 @@
     [mode]="isMobile() ? 'over' : 'side'"
     [attr.role]="isMobile() ? 'dialog' : 'navigation'"
   >
-    <mat-toolbar class="toolbar-sidenav">
+    <mat-toolbar class="toolbar-sidenav justify-between">
       <button
         matIconButton
         type="button"

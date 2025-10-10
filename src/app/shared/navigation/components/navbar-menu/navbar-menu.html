@@ -1,0 +1,95 @@
+<nav class="w-100" role="navigation" aria-label="Menú principal">
+  <ul class="display-flex gap-20" role="menubar" aria-label="Opciones de navegación">
+    <li
+      #rla="routerLinkActive"
+      class="display-flex justify-center align-center link"
+      routerLink="/venta"
+      routerLinkActive="active"
+      role="menuitem"
+      tabindex="0"
+      aria-label="Vender una propiedad"
+      [attr.aria-current]="rla ? 'page' : undefined"
+      (mouseover)="service.showMenu()"
+    >
+      <small>Vender</small>
+    </li>
+    <li
+      #rla="routerLinkActive"
+      class="display-flex justify-center align-center link"
+      routerLink="/compra"
+      routerLinkActive="active"
+      role="menuitem"
+      tabindex="0"
+      aria-label="Comprar una propiedad"
+      [attr.aria-current]="rla ? 'page' : undefined"
+    >
+      <small>Comprar</small>
+    </li>
+    <li
+      #rla="routerLinkActive"
+      class="display-flex justify-center align-center link"
+      routerLink="/arriendo"
+      routerLinkActive="active"
+      role="menuitem"
+      tabindex="0"
+      aria-label="Buscar propiedades en arriendo"
+      [attr.aria-current]="rla ? 'page' : undefined"
+    >
+      <small>Arriendo</small>
+    </li>
+    <li
+      #rla="routerLinkActive"
+      class="display-flex justify-center align-center link"
+      routerLink="/arrendar"
+      routerLinkActive="active"
+      role="menuitem"
+      tabindex="0"
+      aria-label="Poner una propiedad en arriendo"
+      [attr.aria-current]="rla ? 'page' : undefined"
+    >
+      <small>Arrendar</small>
+    </li>
+    <li
+      #rla="routerLinkActive"
+      class="display-flex justify-center align-center link"
+      routerLink="/asesoria"
+      routerLinkActive="active"
+      role="menuitem"
+      tabindex="0"
+      aria-label="Obtener asesoría inmobiliaria"
+      [attr.aria-current]="rla ? 'page' : undefined"
+    >
+      <small>Asesoria</small>
+    </li>
+    <li
+      #rla="routerLinkActive"
+      class="display-flex justify-center align-center link"
+      routerLink="/contacto"
+      routerLinkActive="active"
+      role="menuitem"
+      tabindex="0"
+      aria-label="Contactar con nosotros"
+      [attr.aria-current]="rla ? 'page' : undefined"
+    >
+      <small>Contáctanos</small>
+    </li>
+    <li
+      #rla="routerLinkActive"
+      class="display-flex justify-center align-center link"
+      routerLink="/sobre-nosotros"
+      routerLinkActive="active"
+      role="menuitem"
+      tabindex="0"
+      aria-label="Información sobre nuestra empresa"
+      [attr.aria-current]="rla ? 'page' : undefined"
+    >
+      <small>Sobre nosotros</small>
+    </li>
+  </ul>
+  @if (service.show()) {
+    <div class="enter-container" animate.enter="enter-animation" animate.leave="leave-animation" (mouseleave)="service.hideMenu()">
+      <p>The box is entering.</p>
+    </div>
+  }
+</nav>
+
