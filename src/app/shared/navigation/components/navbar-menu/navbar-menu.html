@@ -1,8 +1,10 @@
 <nav class="w-100" role="navigation" aria-label="Menú principal">
   <ul class="display-flex gap-20" role="menubar" aria-label="Opciones de navegación">
+    <li (mouseover)="service.hideMenu()">
+      <button>Logo</button>
+    </li>
     <li
       #rla="routerLinkActive"
-      class="display-flex justify-center align-center link"
       routerLink="/venta"
       routerLinkActive="active"
       role="menuitem"
@@ -15,7 +17,6 @@
     </li>
     <li
       #rla="routerLinkActive"
-      class="display-flex justify-center align-center link"
       routerLink="/compra"
       routerLinkActive="active"
       role="menuitem"
@@ -27,7 +28,6 @@
     </li>
     <li
       #rla="routerLinkActive"
-      class="display-flex justify-center align-center link"
       routerLink="/arriendo"
       routerLinkActive="active"
       role="menuitem"
@@ -39,7 +39,6 @@
     </li>
     <li
       #rla="routerLinkActive"
-      class="display-flex justify-center align-center link"
       routerLink="/arrendar"
       routerLinkActive="active"
       role="menuitem"
@@ -51,7 +50,6 @@
     </li>
     <li
       #rla="routerLinkActive"
-      class="display-flex justify-center align-center link"
       routerLink="/asesoria"
       routerLinkActive="active"
       role="menuitem"
@@ -63,7 +61,6 @@
     </li>
     <li
       #rla="routerLinkActive"
-      class="display-flex justify-center align-center link"
       routerLink="/contacto"
       routerLinkActive="active"
       role="menuitem"
@@ -75,7 +72,6 @@
     </li>
     <li
       #rla="routerLinkActive"
-      class="display-flex justify-center align-center link"
       routerLink="/sobre-nosotros"
       routerLinkActive="active"
       role="menuitem"
@@ -84,6 +80,9 @@
       [attr.aria-current]="rla ? 'page' : undefined"
     >
       <small>Sobre nosotros</small>
+    </li>
+    <li (mouseover)="service.hideMenu()">
+      <button>Buscar</button>
     </li>
   </ul>
   @if (service.show()) {

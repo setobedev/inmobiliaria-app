@@ -13,5 +13,4 @@ export class NavigationService {
   hideMenu() {
     this.show.set(false);
   }
-
 }
