@@ -23,6 +23,7 @@
       tabindex="0"
       aria-label="Comprar una propiedad"
       [attr.aria-current]="rla ? 'page' : undefined"
+      (mouseover)="service.showMenu()"
     >
       <small>Comprar</small>
     </li>
@@ -34,6 +35,7 @@
       tabindex="0"
       aria-label="Buscar propiedades en arriendo"
       [attr.aria-current]="rla ? 'page' : undefined"
+      (mouseover)="service.showMenu()"
     >
       <small>Arriendo</small>
     </li>
@@ -45,6 +47,7 @@
       tabindex="0"
       aria-label="Poner una propiedad en arriendo"
       [attr.aria-current]="rla ? 'page' : undefined"
+      (mouseover)="service.showMenu()"
     >
       <small>Arrendar</small>
     </li>
@@ -56,6 +59,7 @@
       tabindex="0"
       aria-label="Obtener asesoría inmobiliaria"
       [attr.aria-current]="rla ? 'page' : undefined"
+      (mouseover)="service.showMenu()"
     >
       <small>Asesoria</small>
     </li>
@@ -67,6 +71,7 @@
       tabindex="0"
       aria-label="Contactar con nosotros"
       [attr.aria-current]="rla ? 'page' : undefined"
+      (mouseover)="service.showMenu()"
     >
       <small>Contáctanos</small>
     </li>
@@ -78,6 +83,7 @@
       tabindex="0"
       aria-label="Información sobre nuestra empresa"
       [attr.aria-current]="rla ? 'page' : undefined"
+      (mouseover)="service.showMenu()"
     >
       <small>Sobre nosotros</small>
     </li>
@@ -86,9 +92,13 @@
     </li>
   </ul>
   @if (service.show()) {
-    <div class="enter-container" animate.enter="enter-animation" animate.leave="leave-animation" (mouseleave)="service.hideMenu()">
-      <p>The box is entering.</p>
-    </div>
+  <div
+    class="enter-container"
+    animate.enter="enter-animation"
+    animate.leave="leave-animation"
+    (mouseleave)="service.hideMenu()"
+  >
+    <p>The box is entering.</p>
+  </div>
   }
 </nav>
-
