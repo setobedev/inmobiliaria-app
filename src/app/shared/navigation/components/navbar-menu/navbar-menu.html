@@ -3,102 +3,67 @@
     <li (mouseover)="service.hideMenu()">
       <button>Logo</button>
     </li>
+    @for (item of navbarItems; track $index) {
     <li
       #rla="routerLinkActive"
-      routerLink="/venta"
+      routerLink="{{ item.route }}"
       routerLinkActive="active"
       role="menuitem"
       tabindex="0"
-      aria-label="Vender una propiedad"
+      aria-label="{{ item.ariaLabel }}"
       [attr.aria-current]="rla ? 'page' : undefined"
-      (mouseover)="service.showMenu()"
+      (mouseover)="currentTemplate.set(item.route); service.showMenu()"
     >
-      <small>Vender</small>
+      <small>{{ item.label }}</small>
     </li>
-    <li
-      #rla="routerLinkActive"
-      routerLink="/compra"
-      routerLinkActive="active"
-      role="menuitem"
-      tabindex="0"
-      aria-label="Comprar una propiedad"
-      [attr.aria-current]="rla ? 'page' : undefined"
-      (mouseover)="service.showMenu()"
-    >
-      <small>Comprar</small>
-    </li>
-    <li
-      #rla="routerLinkActive"
-      routerLink="/arriendo"
-      routerLinkActive="active"
-      role="menuitem"
-      tabindex="0"
-      aria-label="Buscar propiedades en arriendo"
-      [attr.aria-current]="rla ? 'page' : undefined"
-      (mouseover)="service.showMenu()"
-    >
-      <small>Arriendo</small>
-    </li>
-    <li
-      #rla="routerLinkActive"
-      routerLink="/arrendar"
-      routerLinkActive="active"
-      role="menuitem"
-      tabindex="0"
-      aria-label="Poner una propiedad en arriendo"
-      [attr.aria-current]="rla ? 'page' : undefined"
-      (mouseover)="service.showMenu()"
-    >
-      <small>Arrendar</small>
-    </li>
-    <li
-      #rla="routerLinkActive"
-      routerLink="/asesoria"
-      routerLinkActive="active"
-      role="menuitem"
-      tabindex="0"
-      aria-label="Obtener asesoría inmobiliaria"
-      [attr.aria-current]="rla ? 'page' : undefined"
-      (mouseover)="service.showMenu()"
-    >
-      <small>Asesoria</small>
-    </li>
-    <li
-      #rla="routerLinkActive"
-      routerLink="/contacto"
-      routerLinkActive="active"
-      role="menuitem"
-      tabindex="0"
-      aria-label="Contactar con nosotros"
-      [attr.aria-current]="rla ? 'page' : undefined"
-      (mouseover)="service.showMenu()"
-    >
-      <small>Contáctanos</small>
-    </li>
-    <li
-      #rla="routerLinkActive"
-      routerLink="/sobre-nosotros"
-      routerLinkActive="active"
-      role="menuitem"
-      tabindex="0"
-      aria-label="Información sobre nuestra empresa"
-      [attr.aria-current]="rla ? 'page' : undefined"
-      (mouseover)="service.showMenu()"
-    >
-      <small>Sobre nosotros</small>
-    </li>
+    }
     <li (mouseover)="service.hideMenu()">
       <button>Buscar</button>
     </li>
   </ul>
   @if (service.show()) {
-  <div
+  <app-navbar-submenu
     class="enter-container"
     animate.enter="enter-animation"
     animate.leave="leave-animation"
     (mouseleave)="service.hideMenu()"
+    [template]="_currentTemplate()"
   >
-    <p>The box is entering.</p>
-  </div>
+  </app-navbar-submenu>
   }
 </nav>
+
+<ng-template #menuSales>
+  <!-- contenido del menú de ventas -->
+  <app-menu-sales />
+</ng-template>
+
+<ng-template #menuBuys>
+  <!-- contenido del menú de compras -->
+  <app-menu-buys />
+</ng-template>
+
+<ng-template #menuRent>
+  <!-- contenido del menú de arriendo -->
+  <app-menu-rent />
+</ng-template>
+
+<ng-template #menuRenting>
+  <!-- contenido del menú de arrendamientos -->
+  <app-menu-renting />
+</ng-template>
+
+<ng-template #menuSupport>
+  <!-- contenido del menú de asesoria -->
+  <app-menu-support />
+</ng-template>
+
+<ng-template #menuContact>
+  <!-- contenido del menú de contacto -->
+  <app-menu-contact />
+</ng-template>
+
+<ng-template #menuAboutUs>
+  <!-- contenido del menú de sobre nosotros -->
+  <app-menu-about-us />
+</ng-template>
