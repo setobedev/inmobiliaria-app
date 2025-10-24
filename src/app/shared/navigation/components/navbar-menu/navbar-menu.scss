@@ -32,9 +32,6 @@
     ul {
       width: 100%;
       display: flex;
-      margin-inline: auto;
-      align-items: center;
-      padding-inline: 22px;
       height: var(--height-navbar);
       justify-content: space-around;
 
@@ -65,9 +62,9 @@
   font-size: 20px;
   font-weight: bold;
   position: absolute;
+  padding: 20px 20px 0px 20px;
   height: var(--height-submenu);
   margin-top: var(--height-navbar);
-  padding: 20px 20px 0px 20px;
 }
 
 .enter-animation {
