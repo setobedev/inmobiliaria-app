@@ -1,4 +1,5 @@
-<mat-sidenav-container class="sidenav-container">
+@if (showNavigation()) {
+  <mat-sidenav-container class="sidenav-container">
   <!-- Menu izquierdo -->
   <mat-sidenav
     #sidenavLeft
@@ -30,10 +31,13 @@
 
   <!-- Contenido principal -->
   <mat-sidenav-content>
-    <app-navbar-menu [sidenavLeft]="sidenavLeft" [sidenavRight]="sidenavRight"></app-navbar-menu>
+    <app-header>
+      <app-navbar-menu [sidenavLeft]="sidenavLeft" [sidenavRight]="sidenavRight"></app-navbar-menu>
+    </app-header>
     <div class="content">
-      <ng-content ></ng-content>
+        <ng-container *ngTemplateOutlet="content"></ng-container>
     </div>
+    <app-footer></app-footer>
   </mat-sidenav-content>
 
   <!-- Menu derecho -->
@@ -65,3 +69,10 @@
     </mat-nav-list>
   </mat-sidenav>
 </mat-sidenav-container>
+} @else {
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+}
+
+<ng-template #content>
+  <ng-content></ng-content>
+</ng-template>

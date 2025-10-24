@@ -10,7 +10,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { NavigationService } from '../../navigation.service';
+import { NavigationService } from '../../../../core/services/navigation.service';
 import { MenuSales } from '../menus/menu-sales/menu-sales';
 import { MenuBuys } from '../menus/menu-buys/menu-buys';
 import { MenuRent } from '../menus/menu-rent/menu-rent';

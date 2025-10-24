@@ -1,16 +1,16 @@
 <mat-toolbar
   color="primary"
   class="toolbar-navbar"
-  [ngClass]="{ open: service.show() }"
-  (mouseover)="service.show() ? service.showMenu() : null"
+  [ngClass]="{ open: service.showSubmenu() }"
+  (mouseover)="service.showSubmenu() ? service.showMenu() : null"
   (mouseleave)="service.hideMenu()"
 >
   <!-- TODO: Este es para bloquear el hiden -->
   <!-- <mat-toolbar
   color="primary"
   class="toolbar-navbar"
-  [ngClass]="{ open: service.show() }"
-  (mouseover)="service.show() ? service.showMenu() : null"
+  [ngClass]="{ open: service.showSubmenu() }"
+  (mouseover)="service.showSubmenu() ? service.showMenu() : null"
 > -->
   <nav
     role="navigation"
@@ -64,7 +64,7 @@
     </button>
     }
     <!-- Submenu -->
-    @if (service.show()) {
+    @if (service.showSubmenu()) {
     <app-navbar-submenu
       class="submenu"
       animate.enter="enter-animation"

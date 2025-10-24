@@ -1,6 +1,6 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, effect, inject, Input, input, TemplateRef } from '@angular/core';
-import { NavigationService } from '../../navigation.service';
+import { NavigationService } from '../../../../core/services/navigation.service';
 
 @Component({
   selector: 'app-navbar-submenu',

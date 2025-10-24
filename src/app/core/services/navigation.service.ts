@@ -2,13 +2,14 @@ import { Injectable, signal } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class NavigationService {
-  show = signal(false);
+  showSubmenu = signal(false);
+  showNavigation = signal(true);
 
   showMenu() {
-    this.show.set(true);
+    this.showSubmenu.set(true);
   }
 
   hideMenu() {
-    this.show.set(false);
+    this.showSubmenu.set(false);
   }
 }
