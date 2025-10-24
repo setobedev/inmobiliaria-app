@@ -35,6 +35,9 @@
     <!-- Menu navbar -->
     @if(!breakpointsService.isMobile()) {
     <ul role="menubar" aria-label="Opciones de navegación">
+      <li (mouseover)="service.hideMenu()">
+        <a class="icon icon-free-home"></a>
+      </li>
       @for (item of navbarItems; track $index) {
       <li
         #rla="routerLinkActive"
@@ -49,6 +52,14 @@
         <small>{{ item.label }}</small>
       </li>
       }
+      <li (mouseover)="currentTemplate() !== 'search' ? service.hideMenu() : null">
+        <a
+          class="icon icon-free-search"
+          (click)="
+            currentTemplate.set('search'); service.show() ? service.hideMenu() : service.showMenu()
+          "
+        ></a>
+      </li>
     </ul>
     }
     <!-- Boton menu mobile right -->
@@ -108,4 +119,9 @@
 <ng-template #menuAboutUs>
   <!-- contenido del menú de sobre nosotros -->
   <app-menu-about-us />
+</ng-template>
+
+<ng-template #search>
+  <!-- contenido del menú de sobre nosotros -->
+  Buscardor
 </ng-template>

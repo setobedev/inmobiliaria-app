@@ -58,6 +58,8 @@ export class NavbarMenu {
   @ViewChild('menuContact') menuContact!: TemplateRef<any>;
   @ViewChild('menuAboutUs') menuAboutUs!: TemplateRef<any>;
 
+  @ViewChild('search') search!: TemplateRef<any>;
+
   breakpointsService = inject(BreakpointsService);
 
   navbarItems = [
@@ -117,8 +119,21 @@ export class NavbarMenu {
         return this.menuContact;
       case '/sobre-nosotros':
         return this.menuAboutUs;
+      case 'search':
+        return this.search;
       default:
         return null;
     }
   });
+
+  constructor() {
+    effect(() => {
+      this.setVariableSubmenu();
+    });
+  }
+
+  setVariableSubmenu() {
+    if (this.currentTemplate() !== 'search') document.documentElement.style.setProperty('--height-submenu', '300px');
+    else document.documentElement.style.setProperty('--height-submenu', '150px');
+  }
 }
