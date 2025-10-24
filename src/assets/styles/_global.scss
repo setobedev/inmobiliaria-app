@@ -1,5 +1,7 @@
+@use './variables' as *;
 @use './flex' as *;
 @use './sizing' as *;
+@use './fonts' as *;
 
 .visible {
   visibility: visible !important;
@@ -11,4 +13,13 @@
 
 .link {
   cursor: pointer;
+}
+
+.icon {
+  font-family: 'icomoon' !important;
+  font-size: 14px;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

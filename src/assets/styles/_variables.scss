@@ -1,0 +1,7 @@
+
+:root {
+  // Variables Navbar Menu
+  --height-navbar: 44px;
+  --height-submenu: 300px;
+  --height-navbar-submenu: calc(var(--height-navbar) + var(--height-submenu));
+}

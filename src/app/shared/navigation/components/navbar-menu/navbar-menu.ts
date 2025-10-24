@@ -1,4 +1,14 @@
-import { Component, computed, inject, signal, TemplateRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  inject,
+  Input,
+  input,
+  signal,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NavigationService } from '../../navigation.service';
 import { MenuSales } from '../menus/menu-sales/menu-sales';
@@ -9,25 +19,37 @@ import { MenuSupport } from '../menus/menu-support/menu-support';
 import { MenuContact } from '../menus/menu-contact/menu-contact';
 import { MenuAboutUs } from '../menus/menu-about-us/menu-about-us';
 import { NavbarSubmenu } from '../navbar-submenu/navbar-submenu';
+import { MatSidenav } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { NgClass } from '@angular/common';
+import { BreakpointsService } from '../../../../core/services/breakpoints.service';
+
+const IMPORTS_COMMON = [NgClass];
+const IMPORTS_ROUTER = [RouterLink, RouterLinkActive];
+const IMPORTS_MAT = [MatToolbarModule, MatIconModule, MatButtonModule];
+const IMPORTS_COMPONENTS = [
+  MenuSales,
+  MenuBuys,
+  MenuRent,
+  MenuRenting,
+  MenuSupport,
+  MenuContact,
+  MenuAboutUs,
+  NavbarSubmenu,
+];
 
 @Component({
   selector: 'app-navbar-menu',
-  imports: [
-    RouterLink,
-    RouterLinkActive,
-    MenuSales,
-    MenuBuys,
-    MenuRent,
-    MenuRenting,
-    MenuSupport,
-    MenuContact,
-    MenuAboutUs,
-    NavbarSubmenu,
-  ],
+  imports: [...IMPORTS_COMMON, ...IMPORTS_ROUTER, ...IMPORTS_COMPONENTS, ...IMPORTS_MAT],
   templateUrl: './navbar-menu.html',
   styleUrl: './navbar-menu.scss',
 })
 export class NavbarMenu {
+  @Input({ required: true }) sidenavLeft!: MatSidenav;
+  @Input({ required: true }) sidenavRight!: MatSidenav;
+
   @ViewChild('menuSales') menuSales!: TemplateRef<any>;
   @ViewChild('menuBuys') menuBuys!: TemplateRef<any>;
   @ViewChild('menuRent') menuRent!: TemplateRef<any>;
@@ -35,6 +57,8 @@ export class NavbarMenu {
   @ViewChild('menuSupport') menuSupport!: TemplateRef<any>;
   @ViewChild('menuContact') menuContact!: TemplateRef<any>;
   @ViewChild('menuAboutUs') menuAboutUs!: TemplateRef<any>;
+
+  breakpointsService = inject(BreakpointsService);
 
   navbarItems = [
     {

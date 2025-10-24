@@ -1,38 +1,66 @@
 @use '../../../../../assets/styles/fonts' as *;
 
-li {
-  height: 44px;
+.mat-toolbar {
+  padding: 0;
   display: flex;
-  align-items: center;
+  position: fixed;
+  align-items: start;
+  background: #ebebeb;
   justify-content: center;
-  text-decoration: none;
+  height: var(--height-navbar);
+  transition: height 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 
-  small {
-    transition: all 0.3s ease-in-out;
+  &.open {
+    height: var(--height-navbar-submenu);
   }
 
-  &.active small,
-  &:hover small {
-    color: #000;
-    font-weight: 500;
-    text-shadow: 0 0 0.8px #000000;
+  nav {
+    width: 100%;
+    display: flex;
+    max-width: 1024px;
+    position: relative;
+    height: var(--height-navbar);
+
+    &.justify-content-center {
+      justify-content: center;
+    }
+
+    &.justify-content-space-between {
+      justify-content: space-between;
+    }
+
+    ul {
+      width: 100%;
+      display: flex;
+      margin-inline: auto;
+      align-items: center;
+      padding-inline: 22px;
+      height: var(--height-navbar);
+      justify-content: space-between;
+
+      li {
+        flex: auto;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
   }
 }
 
-.enter-container {
-  border: 1px solid #dddddd;
-  margin-top: 1em;
-  padding: 20px 20px 0px 20px;
-  font-weight: bold;
-  font-size: 20px;
-
-  background: #ffffff;
-  position: absolute;
-  height: 300px;
+.submenu {
   top: 0;
   left: 0;
   width: 100%;
-  margin-top: 44px;
+  margin-top: 1em;
+  font-size: 20px;
+  font-weight: bold;
+  position: absolute;
+  height: var(--height-submenu);
+  margin-top: var(--height-navbar);
+  padding: 20px 20px 0px 20px;
 }
 
 .enter-animation {
@@ -46,18 +74,18 @@ li {
 @keyframes expand {
   from {
     opacity: 0;
-    height: 0px;
+    height: var(--height-navbar);
   }
   to {
     opacity: 1;
-    height: 300px;
+    height: var(--height-navbar-submenu);
   }
 }
 
 @keyframes contract {
   from {
     opacity: 1;
-    height: 300px;
+    height: var(--height-navbar-submenu);
   }
   to {
     opacity: 0;

@@ -6,9 +6,9 @@
     class="sidenav"
     position="start"
     [opened]="false"
-    [ngClass]="{ mobile: isMobile() }"
-    [mode]="isMobile() ? 'over' : 'side'"
-    [attr.role]="isMobile() ? 'dialog' : 'navigation'"
+    [ngClass]="{ phone: breakpointsService.isPhone(), tablet: breakpointsService.isTablet() }"
+    [mode]="breakpointsService.isMobile() ? 'over' : 'side'"
+    [attr.role]="breakpointsService.isMobile() ? 'dialog' : 'navigation'"
   >
     <mat-toolbar class="toolbar-sidenav justify-between">
       Menu izquierdo
@@ -30,43 +30,9 @@
 
   <!-- Contenido principal -->
   <mat-sidenav-content>
-    <mat-toolbar color="primary" class="toolbar-navbar">
-      <ul class="w-100 display-flex justify-between align-center">
-        <li>
-          @if(isMobile()){
-          <button
-            matIconButton
-            type="button"
-            aria-label="Toggle sidenav"
-            (click)="sidenavLeft.toggle()"
-            [class.display-none]="!isMobile() && sidenavLeft.opened"
-          >
-            <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-          </button>
-          }
-        </li>
-        <li>
-          @if(!isMobile()) {
-          <app-navbar-menu />
-          }
-        </li>
-        <li>
-          @if(isMobile()){
-          <button
-            matIconButton
-            type="button"
-            aria-label="Toggle sidenav"
-            (click)="sidenavRight.toggle()"
-            [class.display-none]="!isMobile() && sidenavRight.opened"
-          >
-            <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-          </button>
-          }
-        </li>
-      </ul>
-    </mat-toolbar>
+    <app-navbar-menu [sidenavLeft]="sidenavLeft" [sidenavRight]="sidenavRight"></app-navbar-menu>
     <div class="content">
-      <ng-content></ng-content>
+      <ng-content ></ng-content>
     </div>
   </mat-sidenav-content>
 
@@ -77,9 +43,9 @@
     position="end"
     class="sidenav"
     [opened]="false"
-    [ngClass]="{ mobile: isMobile() }"
-    [mode]="isMobile() ? 'over' : 'side'"
-    [attr.role]="isMobile() ? 'dialog' : 'navigation'"
+    [ngClass]="{ phone: breakpointsService.isPhone(), tablet: breakpointsService.isTablet() }"
+    [mode]="breakpointsService.isMobile() ? 'over' : 'side'"
+    [attr.role]="breakpointsService.isMobile() ? 'dialog' : 'navigation'"
   >
     <mat-toolbar class="toolbar-sidenav justify-between">
       <button

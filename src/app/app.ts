@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavigationComponent } from './shared/navigation/navigation.component';
+import { BreakpointsService } from './core/services/breakpoints.service';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +11,5 @@ import { NavigationComponent } from './shared/navigation/navigation.component';
 })
 export class App {
   protected readonly title = signal('inmobiliaria-app');
+  protected readonly breakpointsService = inject(BreakpointsService);
 }
